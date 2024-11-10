@@ -1,0 +1,27 @@
+With Streams, we can process data piece by piece instead of reading or writing the whole data at once.
+
+Why Streams?
+Memory Efficiency: Streams process data in chunks, reducing memory consumption, especially for large data files or 
+continuous data sources.
+Time Efficiency: Streams process data as soon as it’s available without waiting for the entire data set to be ready.
+
+Types of Streams
+Readable Streams: Streams from which data can be read (e.g., reading data from a file).
+Writable Streams: Streams to which data can be written (e.g., writing data to a file).
+Duplex Streams: Streams that are both readable and writable (e.g., a TCP socket).
+Transform Streams: Streams that modify or transform the data as it is read or written (e.g., compressing or encrypting data).
+
+
+Stream Events : 
+Streams emit several important events:
+
+data: Fired when a chunk of data is available in a readable stream.
+end: Fired when there is no more data in a readable stream.
+error: Fired when an error occurs during a stream operation.
+finish: Fired when all data has been written to a writable stream.
+close: Fired when a stream is closed
+
+You can switch between modes using:
+
+stream.pause() to pause the stream.
+stream.resume() to resume the stream.

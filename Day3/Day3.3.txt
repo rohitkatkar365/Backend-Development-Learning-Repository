@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Node App</title>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            body{
+                background-color: #232323;
+            }
+            .main-content{
+                width: 80%;
+                padding: 10px 40px;
+                background-color: #343434;
+                border-radius: 5px;
+                margin: 20px auto;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                color: #fff;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            a{
+                color: #fff;
+                text-decoration: none;
+                font-size: 14px;
+                font-weight: bold;
+                margin: 3px 10px;
+            }
+            .navbar{
+                padding: 4px 30px 10px 0px;
+                border-bottom: #232323 3px solid;
+            }
+            .page-content{
+                text-align: center;
+                padding-top: 40px;
+            }
+            .products-list{
+                padding: 10px 10px;
+                margin: 2px auto;
+                color: #fff;
+                border-bottom: #232323 1.5px solid;
+            }
+            .products-detail{
+                display: flex;
+            }
+            .product-image{
+                width: 140px;
+                height: 140px;
+                border-radius: 5px;
+                padding: 10px 10px;
+                margin: 0px 10px;
+            }
+            .product-specs{
+                text-align: left;
+                margin: 0px 10px;
+                
+            }
+            span{
+                color: #FF5733;
+            }
+            p{
+                font-size: 12px;
+                margin: 2px 0px 2px 0px;
+            }
+            h5,h4,h3,h2{
+                margin: 10px 0px 10px 0px;
+            }
+            .product-info{
+                width: 20%;
+                padding: 5px 0px;
+                text-align: left;
+            }
+            .btn{
+                padding: 6px 20px;
+                border-radius: 3px;
+                border: none;
+            }
+            .btn-primary{
+                background-color: #16A085;
+            }
+            .btn-secondary{
+                background-color: #FF5733;
+            }
+			.btn-back{
+				padding: 6px 20px;
+                border-radius: 15px;
+                border: none;
+				background-color:#FF3131;
+				color: white;
+			}
+			.product-page{
+				padding: 20px 50px;
+			}
+			.product-desc{
+				display: flex;
+				width: 100%;
+			}
+			.product-desc-image{
+			    margin-right: 20px;
+			}
+			.product-details-info{
+				margin-left: 40px;
+				text-align: left;
+			}
+			.product-desc-p{
+				margin-top: 4px;
+				font-size: 14px;
+			}
+			.product-desc-details{
+				text-align: left;
+				margin: 20px 0px;
+			}
+			.product-details-desc{
+				margin-top: 60px;
+				font-size: 16px;
+			}
+        </style>
+    </head>
+    <body>
+        <div class="main-content">
+            <div class="navbar">
+                <a href="Home">Home</a>
+                <a href="Products">Products</a>
+                <a href="About">About</a>
+                <a href="Contact">Contact</a>
+            </div>
+            <div class="page-content">
+                {{%CONTENT%}}
+            </div>
+        </div>
+    </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    body{
+        background-color: #232323;
+    }
+    .main-content{
+        width: 80%;
+        padding: 10px 40px;
+        background-color: #343434;
+        border-radius: 5px;
+        margin: 20px auto;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: #fff;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 3px 10px;
+    }
+    .navbar{
+        padding: 4px 30px 10px 0px;
+        border-bottom: #232323 3px solid;
+    }
+    .page-content{
+        text-align: center;
+        padding-top: 40px;
+    }
+    .products-list{
+        padding: 10px 10px;
+        margin: 2px auto;
+        color: #fff;
+        border-bottom: #232323 1.5px solid;
+    }
+    .products-detail{
+        display: flex;
+    }
+    .product-image{
+        width: 140px;
+        height: 140px;
+        border-radius: 5px;
+        padding: 10px 10px;
+        margin: 0px 10px;
+    }
+    .product-specs{
+        text-align: left;
+        margin: 0px 10px;
+        
+    }
+    span{
+        color: #FF5733;
+    }
+    p{
+        font-size: 12px;
+        margin: 2px 0px 2px 0px;
+    }
+    h5,h4,h3,h2{
+        margin: 10px 0px 10px 0px;
+    }
+    .product-info{
+        width: 20%;
+        padding: 5px 0px;
+        text-align: left;
+    }
+    .btn{
+        padding: 6px 20px;
+        border-radius: 3px;
+        border: none;
+    }
+    .btn-primary{
+        background-color: #16A085;
+    }
+    .btn-secondary{
+        background-color: #FF5733;
+    }
+    .btn-back{
+        padding: 6px 20px;
+        border-radius: 15px;
+        border: none;
+        background-color:#FF3131;
+        color: white;
+    }
+    .product-page{
+        padding: 20px 50px;
+    }
+    .product-desc{
+        display: flex;
+        width: 100%;
+    }
+    .product-desc-image{
+        margin-right: 20px;
+    }
+    .product-details-info{
+        margin-left: 40px;
+        text-align: left;
+    }
+    .product-desc-p{
+        margin-top: 4px;
+        font-size: 14px;
+    }
+    .product-desc-details{
+        text-align: left;
+        margin: 20px 0px;
+    }
+    .product-details-desc{
+        margin-top: 60px;
+        font-size: 16px;
+    }
+</style>
+<body>
+    <div class="products-list">
+        <div class="products-detail">
+            <div class="product-image">
+                <img src={{%IMAGE%}} height="120" width="120">
+            </div>
+            <div class="product-specs">
+                <h3>{{%NAME%}}</h3>
+                <p><span>Model Name:</span>{{%MODELNAME%}}</p>
+                <p><span>Model Number:</span>{{%MODELNO%}}</p>
+                <p><span>Size:</span>{{%SIZE%}}</p>
+                <p><span>Camera:</span>{{%CAMERA%}}</p>
+            </div>
+        </div>
+        <div class="products-detail">
+            <div class="product-info"><h4>Price: ${{%PRICE%}}</h4></div>
+            <div class="product-info"><h4>Color: {{%COLOR%}}</h4></div>
+            <div class="product-info">
+                <a href="/products?id={{%ID%}}" class="btn btn-secondary">Show Details</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<div class="page-content"></div>
+    <div class="product-page">
+	<div class="product-desc">
+		<div class="product-desc-image">
+			<img src={{%IMAGE%}} width="280" height="320">
+		</div>
+			<div class="product-details-info">
+				<h1>{{%NAME%}}</h1>
+				<h2 style="color: green;">${{%PRICE%}}</h2>
+				<div class="product-desc-details">
+					<h3">Product Details</h3>
+					<p class="product-desc-p">{{%SIZE%}}</p>
+					<p class="product-desc-p">{{%CAMERA%}}</p>
+					<p class="product-desc-p"><b>Model Number</b>{{%MODELNO%}}</p>
+					<p class="product-desc-p"><b>Model Name</b>{{%MODELNAME%}}</p>
+					<p class="product-desc-p"><b>ROM</b>{{%ROM%}} GB</p>
+				</div>
+				<div class="product-details-desc">
+					<h3>Product Description</h3>
+					<p class="product-desc-p">
+						{{%DESC%}}
+					</p>
+				</div>
+			</div>
+			<div>
+				<a href="/products" class="btn-back">Back</a>
+			</div>
+		</div>
+	</div>
+ </div>
+
+
+ const http = require("http");
+const fs = require("fs");
+const url = require("url");
+// User-Defined module
+const replaceHtml = require("./Module/replaceHtml");
+
+const port = 3000;
+const hostname = "127.0.0.1";
+
+// Read files
+let html = fs.readFileSync("./Template/index.html", "utf-8");
+let data = JSON.parse(fs.readFileSync("./Data/product.json", "utf-8"));
+let index1 = fs.readFileSync("./Template/index1.html", "utf-8");
+let index2 = fs.readFileSync("./Template/index2.html", "utf-8");
+
+// Function to replace placeholders in the HTML template
+// function replaceHtml(template, cur) {
+//   let op = template.replace("{{%IMAGE%}}", cur.productImage);
+//   op = op.replace("{{%NAME%}}", cur.name);
+//   op = op.replace("{{%MODELNAME%}}", cur.modelName);
+//   op = op.replace("{{%MODELNO%}}", cur.modelNumber);
+//   op = op.replace("{{%SIZE%}}", cur.size);
+//   op = op.replace("{{%CAMERA%}}", cur.camera);
+//   op = op.replace("{{%PRICE%}}", cur.price);
+//   op = op.replace("{{%COLOR%}}", cur.color);
+//   op = op.replace("{{%DESC%}}", cur.Description);
+//   op = op.replace("{{%ROM%}}", cur.ROM);
+//   op = op.replace("{{%ID%}}", cur.id);
+//   return op;
+// }
+
+const server = http.createServer((req, res) => {
+  let { query, pathname: path } = url.parse(req.url, true);
+  
+  // Normalize path to lowercase
+  path = path.toLowerCase();
+  res.setHeader("Content-Type", "text/html");
+
+  if (path === "/about" && req.method === "GET") {
+    res.statusCode = 200;
+    res.setHeader("Cache-Control", "no-cache");
+    res.end(html.replace("{{%CONTENT%}}", "About Page"));
+  } else if (path === "/contact" && req.method === "GET") {
+    res.statusCode = 200;
+    res.end(html.replace("{{%CONTENT%}}", "Contact Page"));
+  } else if ((path === "/" || path === "/home") && req.method === "GET") {
+    res.statusCode = 200;
+    res.end(html.replace("{{%CONTENT%}}", "Home Page"));
+  } else if (path === "/products" && req.method === "GET") {
+    if (!query.id) {
+      // Render all products if no specific ID is provided
+      let productHTMLArray = data.map((prod) => {
+        return replaceHtml(index1, prod);
+      });
+      let pl = html.replace("{{%CONTENT%}}", productHTMLArray.join(""));
+      res.statusCode = 200;
+      res.end(pl);
+    } else {
+      // Convert the query.id to a number for comparison
+      const productId = parseInt(query.id, 10); // Use base 10 for conversion
+      const product = data.find((prod) => prod.id === productId);
+      
+      if (product) {
+        // If product found, render the detailed product page using index2
+        let productDetail = replaceHtml(index2, product);
+        res.statusCode = 200;
+        res.end(html.replace("{{%CONTENT%}}", productDetail));
+      } else {
+        // If product not found, show a 404 page
+        res.statusCode = 404;
+        res.end(html.replace("{{%CONTENT%}}", "Error: Product not found"));
+      }
+    }
+  } else {
+    // Handle 404 for unknown paths
+    res.statusCode = 404;
+    res.end(html.replace("{{%CONTENT%}}", "Error: 404 Page Not Found"));
+  }
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+module.exports = function(template,cur){
+    let op = template.replace("{{%IMAGE%}}", cur.productImage);
+  op = op.replace("{{%NAME%}}", cur.name);
+  op = op.replace("{{%MODELNAME%}}", cur.modelName);
+  op = op.replace("{{%MODELNO%}}", cur.modelNumber);
+  op = op.replace("{{%SIZE%}}", cur.size);
+  op = op.replace("{{%CAMERA%}}", cur.camera);
+  op = op.replace("{{%PRICE%}}", cur.price);
+  op = op.replace("{{%COLOR%}}", cur.color);
+  op = op.replace("{{%DESC%}}", cur.Description);
+  op = op.replace("{{%ROM%}}", cur.ROM);
+  op = op.replace("{{%ID%}}", cur.id);
+  return op;
+}
+
+
+[
+    {
+      "id": 0,
+      "name": "APPLE iPhone SE",
+      "color":"Black",
+      "ROM": 128,
+      "price": 990,
+      "modeName": "iPhone SE",
+      "modelNumber": "MHGT3HN/A",
+      "size": "11.94 cm (4.7 inch) Retina HD Display",
+      "camera": "12MP Rear Camera | 7MP Front Camera",
+      "Description": "Widescreen HD LCD Retina Multi-touch IPS Display (1400:1 Contrast Ratio (Typical), True Tone Display, Wide Color Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Display Zoom, Reachability)",
+      "productImage":"http://atlas-content-cdn.pixelsquid.com/stock-images/iphone-x-smartphone-xwVXQLD-600.jpg"
+    },
+    {
+      "id": 1,
+      "name": "APPLE iPhone XR",
+      "color":"White",
+      "ROM": 64,
+      "price": 790,
+      "modeName": "iPhone XR",
+      "modelNumber": "MH6N3HN/A",
+      "size": "15.49 cm (6.1 inch) Display",
+      "camera": "12MP Rear Camera | 7MP Front Camera",
+      "Description": "1400:1 Contrast Ratio (Typical), True Tone Display (Six-channel Light Sensor), Wide Colour Display (P3), 625 nits Maximum Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Support for Display of Multiple Languages and Characters Simultaneously, Liquid Retina HD Display, Tap to Wake, Wide Colour Gamut",
+      "productImage":"https://c8.alamy.com/zooms/6/e98284ded5444c08949d7fd9f2bae166/2cd68c5.jpg"
+    },
+    {
+      "id": 2,
+      "name": "APPLE iPhone 11",
+      "color":"White",
+      "ROM": 64,
+      "price": 740,
+      "modeName": "iPhone 11",
+      "modelNumber": "MHDC3HN/A",
+      "size": "15.49 cm (6.1 inch) Liquid Retina HD",
+      "camera": "12MP + 12MP | 12MP Front Camera",
+      "Description": "1400:1 Contrast Ratio (Typical), True Tone Display, Wide Colour Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint Resistant Oleophobic Coating, Support for Display of Multiple Languages and Characters Simultaneously",
+      "productImage":"https://png.pngtree.com/png-vector/20201230/ourlarge/pngtree-smart-phone-vector-3d-style-mobile-design-mockup-png-image_2679535.jpg"
+    },
+    {
+      "id": 3,
+      "name": "APPLE iPhone XR",
+      "color":"Yellow",
+      "ROM": 128,
+      "price": 999,
+      "modeName": "iPhone XR",
+      "modelNumber": "MHDC4HN/A",
+      "size": "15.49 cm (6.1 inch) Liquid Retina HD",
+      "camera": "12MP + 12MP | 12MP Front Camera",
+      "Description": "1400:1 Contrast Ratio (Typical), True Tone Display, Wide Colour Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint Resistant Oleophobic Coating, Support for Display of Multiple Languages and Characters Simultaneously",
+      "productImage":"https://png.pngtree.com/png-vector/20201230/ourlarge/pngtree-vector-3d-style-smart-phone-mockup-design-png-image_2679529.jpg"
+    },
+    {
+      "id": 4,
+      "name": "APPLE iPhone 12 Mini",
+      "color":"Purple",
+      "ROM": 64,
+      "price": 720,
+      "modeName": "iPhone 12",
+      "modelNumber": "MGJE3HN/A",
+      "size": "13.72 cm (5.4 inch) Super Retina XDR Display",
+      "camera": "12MP + 12MP | 12MP Front Camera",
+      "Description": "Dive into a world of crystal-clear visuals with the Super Retina XDR Display of the iPhone 12 Mini. This beast of a smartphone packs the A14 Bionic chip to make for blazing-fast performance speeds. On top of that, its Dual-camera System, along with Night Mode, helps you click amazing pictures and selfies even when the lighting isn’t as good as you’d want it to be.",
+      "productImage":"https://cdn1.vectorstock.com/i/1000x1000/70/05/realistic-frameless-smartphone-mock-up-3d-vector-33107005.jpg"
+    },
+    {
+      "id": 5,
+      "name": "APPLE iPhone 11",
+      "color":"Red",
+      "ROM": 128,
+      "price": 990,
+      "modeName": "iPhone 11",
+      "modelNumber": "MHDC3HN/A",
+      "size": "15.49 cm (6.1 inch) Liquid Retina HD",
+      "camera": "12MP + 12MP | 12MP Front Camera",
+      "Description": "1400:1 Contrast Ratio (Typical), True Tone Display, Wide Colour Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint Resistant Oleophobic Coating, Support for Display of Multiple Languages and Characters Simultaneously",
+      "productImage":"https://previews.123rf.com/images/barmaleeva/barmaleeva2003/barmaleeva200300004/141800762-white-realistic-smartphone-mockup-3d-mobile-phone-with-blank-white-screen-modern-vector-cell-phone-t.jpg"
+    },
+    {
+      "id": 6,
+      "name": "APPLE iPhone SE",
+      "color":"White",
+      "ROM": 64,
+      "price": 780,
+      "modeName": "iPhone SE",
+      "modelNumber": "MHGT3HN/A",
+      "size": "11.94 cm (4.7 inch) Retina HD Display",
+      "camera": "12MP Rear Camera | 7MP Front Camera",
+      "Description": "Widescreen HD LCD Retina Multi-touch IPS Display (1400:1 Contrast Ratio (Typical), True Tone Display, Wide Color Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Display Zoom, Reachability)",
+      "productImage":"http://atlas-content-cdn.pixelsquid.com/stock-images/iphone-x-smartphone-xwVXQLD-600.jpg"
+    },
+    {
+      "id": 7,
+      "name": "APPLE iPhone 12",
+      "color":"Blue",
+      "ROM": 64,
+      "price": 780,
+      "modeName": "iPhone 12",
+      "modelNumber": "MHGT3HN/A",
+      "size": "11.94 cm (4.7 inch) Retina HD Display",
+      "camera": "12MP Rear Camera | 7MP Front Camera",
+      "Description": "Widescreen HD LCD Retina Multi-touch IPS Display (1400:1 Contrast Ratio (Typical), True Tone Display, Wide Color Display (P3), Haptic Touch, 625 nits Max Brightness (Typical), Fingerprint-resistant Oleophobic Coating, Display Zoom, Reachability)",
+      "productImage":"https://cdn1.vectorstock.com/i/1000x1000/70/05/realistic-frameless-smartphone-mock-up-3d-vector-33107005.jpg"
+    }
+]

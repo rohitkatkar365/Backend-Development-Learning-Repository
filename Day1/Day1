@@ -1,0 +1,34 @@
+Day1
+What is Node.js?
+	• Node.js is an open-source, cross-platform JavaScript runtime environment that allows developers to run JavaScript code 
+	outside of a web browser.
+	• It is built on the V8 JavaScript engine from Google Chrome and enables the execution of JavaScript on the server side.
+	
+	Node.js Pros 
+	👉 Single-threaded, based on event driven, non-blocking I/O model 
+	👉 Perfect for building fast and scalable data-intensive apps. 
+	👉 Companies like Netflix, Uber, Paypal, and eBay have started using node in production. 
+	👉 JavaScript across the entire stack: faster and more efficient development. 
+	👉 NPM huge library of open-source packages available for everyone for free.
+	👉 Very active development community 
+	
+	Use Node.Js
+	👉 API with database behind it (preferably NO-SQL); 
+	👉 Data streaming (think YouTube); 
+	👉 Real-time chat application; 
+	👉 Server-side web application; 
+	
+	Don't Use 
+	👉 Application with heavy server-side processing (CPU Intensive) 
+	👉 For some super heavy server-side processing like having Image manipulations, video conversion, file compression
+	 or anything like that, using something like Ruby on Rails, Php, or Python.
+	
+	These Commands are valid for Windows OS.
+	
+	👉 To Open & Close the Console/Terminal in VS Code: Ctrl+~
+	👉 To Exit from the terminal & Node REPL: .exit
+	👉 Shortcut key to Exit from the terminal & Node REPL: Ctrl + D
+	👉 To clear the terminal: Ctrl + L
+	👉 To Print all Global variables: write node in the terminal and hit enter button, then press TAB 2 times
+	👉 To know the Single Gobal Varaible Properties:  write node in the terminal and hit enter button after that write the 
+	Variable name like String then add .(dot) and press TAB 2 times

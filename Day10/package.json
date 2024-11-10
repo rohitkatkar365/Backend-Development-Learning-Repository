@@ -1,0 +1,14 @@
+{
+  "name": "get-request",
+  "version": "1.0.0",
+  "description": "Handling GET Request",
+  "main": "app.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "RRK",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}

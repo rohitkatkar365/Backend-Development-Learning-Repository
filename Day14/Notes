@@ -1,0 +1,8 @@
+Route Parameter are named URL segment that are used to capture the values specified at their position in the URL. 
+
+Put v/s Patch
+
+Put is a method of modifying resource where the client sends data that updates the entires resource.
+
+Patch is a method of modifying resource where the client sends partial data that is to be updated without modifying 
+the entire data.

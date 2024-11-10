@@ -1,0 +1,208 @@
+The `url` module in Node.js is used for parsing and manipulating URLs. This module provides utilities for URL resolution and parsing, allowing you to work with query strings, protocol, host, pathname, and other URL components.
+
+### How to Import the `url` Module
+
+You can import the `url` module in two ways, depending on the version of Node.js:
+
+- For Node.js versions below v10.x.x:
+  ```javascript
+  const url = require('url');
+  ```
+
+- For Node.js v10.x.x and later, the `URL` class is available globally without requiring the `url` module, but you can still use it like this:
+  ```javascript
+  const { URL } = require('url');
+  ```
+
+### Basic URL Structure
+
+A typical URL looks like this:
+
+```
+https://www.example.com:8080/pathname?search=query#hash
+```
+
+It can be broken down into several parts:
+- **protocol**: `https:`
+- **hostname**: `www.example.com`
+- **port**: `8080`
+- **pathname**: `/pathname`
+- **search/query string**: `?search=query`
+- **hash**: `#hash`
+
+### URL Parsing
+
+The `url` module provides methods to parse and construct URLs.
+
+#### 1. **`url.parse()` (Legacy Method)**
+
+The `url.parse()` method is used to parse a URL string into an object containing its individual components.
+
+```javascript
+const url = require('url');
+
+// Example URL
+const urlString = 'https://www.example.com:8080/pathname?search=query#hash';
+
+// Parse the URL
+const parsedUrl = url.parse(urlString);
+
+console.log(parsedUrl);
+```
+
+**Output:**
+```javascript
+Url {
+  protocol: 'https:',
+  slashes: true,
+  auth: null,
+  host: 'www.example.com:8080',
+  port: '8080',
+  hostname: 'www.example.com',
+  hash: '#hash',
+  search: '?search=query',
+  query: 'search=query',
+  pathname: '/pathname',
+  path: '/pathname?search=query',
+  href: 'https://www.example.com:8080/pathname?search=query#hash'
+}
+```
+
+Key properties:
+- `protocol`: The protocol (`https:` in this case).
+- `hostname`: The domain or IP address.
+- `port`: The port number (if specified).
+- `pathname`: The path after the host.
+- `query`: The query string (without the `?`).
+- `hash`: The part of the URL after the `#`.
+
+#### 2. **`new URL()` (Preferred Modern Method)**
+
+The `URL` class is part of the modern API and is the preferred method for parsing URLs in Node.js versions >= 10.
+
+```javascript
+const { URL } = require('url');
+
+// Example URL
+const myUrl = new URL('https://www.example.com:8080/pathname?search=query#hash');
+
+console.log(myUrl);
+```
+
+**Output:**
+```javascript
+URL {
+  href: 'https://www.example.com:8080/pathname?search=query#hash',
+  origin: 'https://www.example.com:8080',
+  protocol: 'https:',
+  username: '',
+  password: '',
+  host: 'www.example.com:8080',
+  hostname: 'www.example.com',
+  port: '8080',
+  pathname: '/pathname',
+  search: '?search=query',
+  searchParams: URLSearchParams { 'search' => 'query' },
+  hash: '#hash'
+}
+```
+
+With `URL`, you get some additional features:
+- `origin`: Returns the full origin (`protocol + host`).
+- `searchParams`: Returns an object that allows manipulation of the query string.
+- `searchParams.get()`: Extract query parameter values.
+
+#### 3. **Working with Query Strings**
+
+You can access and manipulate the query string through the `searchParams` object.
+
+```javascript
+const { URL } = require('url');
+
+const myUrl = new URL('https://www.example.com/search?query=javascript&sort=asc');
+
+// Get the value of the query parameter
+console.log(myUrl.searchParams.get('query')); // Output: javascript
+
+// Add a new parameter
+myUrl.searchParams.append('page', '2');
+console.log(myUrl.toString()); // Output: https://www.example.com/search?query=javascript&sort=asc&page=2
+
+// Loop through query parameters
+myUrl.searchParams.forEach((value, name) => {
+  console.log(`${name}: ${value}`);
+});
+```
+
+### URL Construction
+
+You can also construct URLs by manually setting the properties of the `URL` object.
+
+```javascript
+const { URL } = require('url');
+
+// Create a new URL object
+const myUrl = new URL('https://www.example.com');
+
+// Set properties
+myUrl.pathname = '/api';
+myUrl.search = '?user=123';
+myUrl.hash = '#top';
+
+console.log(myUrl.href); // Output: https://www.example.com/api?user=123#top
+```
+
+### URL Resolution
+
+The `url.resolve()` method is used to resolve a relative URL against a base URL.
+
+```javascript
+const url = require('url');
+
+// Resolve a relative URL
+const resolvedUrl = url.resolve('https://www.example.com', '/about');
+console.log(resolvedUrl); // Output: https://www.example.com/about
+```
+
+This is helpful when you need to resolve relative URLs against base URLs, such as when dealing with HTML `<a>` tags or API endpoints.
+
+### Key Methods in `url` Module
+
+1. **`url.parse(urlString)`**: Parses a URL into an object.
+2. **`url.format(urlObject)`**: Formats a URL object into a string.
+3. **`url.resolve(base, relative)`**: Resolves a relative URL against a base URL.
+4. **`new URL(url, base)`**: Constructs a URL object using the modern API.
+5. **`URLSearchParams`**: Allows easy access and manipulation of query parameters.
+
+### Example of URL Parsing and Query String Handling
+
+Here’s a full example that combines reading a URL, parsing it, and working with the query string:
+
+```javascript
+const { URL } = require('url');
+
+// Define a sample URL with query parameters
+const myUrl = new URL('https://www.example.com/search?query=nodejs&sort=asc&limit=10');
+
+// Access different parts of the URL
+console.log('Protocol:', myUrl.protocol); // https:
+console.log('Host:', myUrl.host);         // www.example.com
+console.log('Pathname:', myUrl.pathname); // /search
+
+// Work with the query parameters
+console.log('Query string:', myUrl.search); // ?query=nodejs&sort=asc&limit=10
+console.log('Search params:', myUrl.searchParams);
+
+// Get individual query parameters
+console.log('Query:', myUrl.searchParams.get('query')); // nodejs
+console.log('Sort:', myUrl.searchParams.get('sort'));   // asc
+console.log('Limit:', myUrl.searchParams.get('limit')); // 10
+
+// Modify query parameters
+myUrl.searchParams.set('limit', '20');
+console.log('Updated URL:', myUrl.toString()); // https://www.example.com/search?query=nodejs&sort=asc&limit=20
+```
+
+### Conclusion
+
+The `url` module in Node.js is a powerful tool for parsing, constructing, and resolving URLs. The `URL` class introduced in Node.js v10 is now the preferred way to work with URLs, offering a clean API for manipulating query strings, paths, and other components.

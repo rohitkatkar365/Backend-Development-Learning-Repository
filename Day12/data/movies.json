@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "Test",
+    "releaseYear": 2018,
+    "duration": 90,
+    "release": 2021
+  },
+  {
+    "id": 2,
+    "name": "Test 6",
+    "releaseYear": 2020,
+    "duration": 70
+  },
+  {
+    "id": 4,
+    "name": "Stranger",
+    "releaseYear": 2021,
+    "duration": 30,
+    "release": 2021
+  },
+  {
+    "id": 6,
+    "name": "Stranger1",
+    "releaseYear": 2021,
+    "duration": 30
+  },
+  {
+    "id": 7,
+    "name": "Stranger2",
+    "releaseYear": 2021,
+    "duration": 30,
+    "release": 2025
+  },
+  {
+    "id": 8,
+    "name": "Stranger4",
+    "releaseYear": 2021,
+    "duration": 30
+  },
+  {
+    "id": 9,
+    "name": "Stranger4",
+    "releaseYear": 2021
+  },
+  {
+    "id": 10,
+    "name": "RRK",
+    "release": 2025
+  }
+]

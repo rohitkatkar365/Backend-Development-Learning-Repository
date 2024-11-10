@@ -1,0 +1,19 @@
+{
+  "name": "get-request",
+  "version": "1.0.0",
+  "description": "Handling GET Request",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "author": "RRK",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.0",
+    "validator": "^13.12.0"
+  }
+}

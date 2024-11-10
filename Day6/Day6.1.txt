@@ -1,0 +1,18 @@
+Architecture Of Node.js:
+
+1. **Single-Threaded Event Loop**: 
+   - At the heart of Node.js is its event loop, which is single-threaded and handles multiple client requests in an asynchronous, non-blocking manner. This is a key feature that allows Node.js to handle large numbers of concurrent requests efficiently.
+
+2. **Worker Threads / Thread Pool**: 
+   - When Node.js encounters blocking operations like file system access, database queries, or network requests, it offloads these to worker threads or a thread pool (libuv). The worker threads handle these tasks in the background.
+
+3. **Non-Blocking I/O**: 
+   - Instead of waiting for tasks to complete (which would block the event loop), Node.js uses non-blocking I/O. This allows other code to execute while waiting for the results of time-consuming operations.
+
+4. **External APIs**: 
+   - Node.js interacts with various external systems like file systems, databases, and network servers. These interactions are handled asynchronously to avoid blocking the main thread.
+
+5. **Callbacks/Promises**: 
+   - Once a task is completed by a worker thread, the event loop picks up the result and calls the corresponding callback function (or resolves a promise) to handle the result.
+
+This architecture allows Node.js to efficiently manage high-concurrency scenarios, making it suitable for building scalable network applications like web servers, chat applications, and APIs.

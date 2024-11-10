@@ -1,0 +1,211 @@
+														Day2
+														
+What is REPL?
+
+R - Read (Read User Input)
+E - Evaulate (Check user input)
+P - Print (Print user input)
+L - Loop (Return and wait for user input)
+
+> 2 + 2
+4
+> let name = "Rohit"
+undefined
+> name
+'Rohit'
+> name.toUpperCase()
+'ROHIT'
+
+Readline Module :
+	The readline module in Node.js provides an interface for reading data from a readable stream (such as process input from the terminal)
+	 one line at a time. It’s commonly used for interactive command-line interfaces or for reading input line by line from a file or user.
+	Key Features:
+		1. Line-by-Line Input: readline can read user input line by line from the terminal or another readable stream.
+		2. Customizable Prompts: You can define custom prompts (like > or Please enter your name:) to guide users during input.
+		3. Event-Driven: The module is event-based and emits events like 'line' (whenever the user inputs a line) and 'close' 
+		(when the input stream is closed).
+		4. Question Method: It provides an easy method, .question(), for asking questions and processing user responses.
+	
+	Code :
+		
+		// console.log("I Love Node.js")
+		// By Using Node.js
+		const readline = require("readline");
+		let rl = readline.createInterface({
+		    input : process.stdin,
+		    output : process.stdout
+		});
+		rl.question("Please Enter Your Name :- ",(name)=>{
+		    console.log(name);
+		    rl.close()
+		});
+		rl.on("close",()=>{
+		    console.log("Readline Interface Is Closed");
+		    process.exit(0);
+		});
+	
+	• readline.createInterface(): Creates an interface object that manages input and output.
+		• input: Specifies the input stream (e.g., process.stdin for standard input).
+		• output: Specifies the output stream (e.g., process.stdout for standard output).
+	• rl.question(): Prompts the user with a question, takes the input, and calls a callback function with the response.
+	• rl.close(): Closes the readline interface, signaling that no more input is needed.
+	
+FS Module :
+	The fs module in Node.js stands for File System and provides an API for interacting with the file system. It allows you to
+	 work with files and directories, enabling reading, writing, deleting, and manipulating files asynchronously or synchronously.
+	Key Features of the fs Module:
+		1. File Operations: Create, read, write, append, delete, and rename files.
+		2. Directory Operations: Create, read, remove, and manage directories.
+		3. Asynchronous and Synchronous: Supports both async (non-blocking) and sync (blocking) methods.
+		4. Streams: Provides file streams for efficient reading and writing of large files.
+	
+	Common Methods in fs:
+		• fs.readFile() / fs.readFileSync(): Read a file.
+		• fs.writeFile() / fs.writeFileSync(): Write to a file.
+		• fs.appendFile() / fs.appendFileSync(): Append to a file.
+		• fs.unlink() / fs.unlinkSync(): Delete a file.
+		• fs.readdir() / fs.readdirSync(): Read the contents of a directory.
+		• fs.stat() / fs.statSync(): Get file or directory stats (metadata like size, creation date, etc.).
+		• fs.mkdir() / fs.mkdirSync(): Create a directory.
+		• fs.rmdir() / fs.rmdirSync(): Remove a directory.
+	
+	Code : 
+		
+		const fs = require("fs");
+		// Synchronously manipulation 
+		let read = fs.readFileSync("output.txt","utf-8");
+		console.log(read);
+		// let content = "I Love MERN Stack"
+		let wr = fs.writeFileSync("input.txt",read);
+		
+		
+		const fs = require("fs");
+		// Asynchronously manipulation 
+		fs.readFile("output.txt","utf-8",(err,data)=>{
+		    if (data) {
+		        console.log(data);
+		    } else {
+		        console.log(err);
+		    }
+		});
+		fs.writeFile("input1.txt","Hello World",(err,data)=>{
+		    if (data) {
+		        console.log(data);
+		    } else {
+		        console.log(err);
+		    }
+		});
+		
+	Creation of Simple Node.js Server :
+	
+		
+		const http = require("http");
+		const port = 3000;
+		const hostname = '127.0.0.1';
+		const server = http.createServer((req,res)=>{
+		    // console.log(req);
+		    // console.log(res);
+		    
+		    res.end("Welcome To Node.js World");
+		});
+		server.listen(port,hostname,()=>{
+		    console.log(`Server running at http://${hostname}:${port}/`);
+		});
+		
+	
+	To understand how the web works, let's break down the process into key components and steps involved in a typical 
+	interaction between a user and a website:
+	
+	### 1. **Client (Browser) and Server Interaction**
+	When you visit a website (e.g., typing `www.example.com` into your browser), this action triggers a series of steps 
+	involving your browser (the **client**) and the website’s hosting computer (the **server**).
+	
+	### 2. **The Client-Server Model**
+	- **Client**: The web browser (like Chrome, Firefox, etc.) acts as the client. Its role is to send a request to the server 
+	and display the response (usually a webpage).
+	- **Server**: The server is a computer that hosts the website’s files (HTML, CSS, JavaScript, images, etc.) and processes 
+	incoming requests from clients.
+	
+	### 3. **Domain Name System (DNS)**
+	- When you type a URL (e.g., `www.example.com`), the browser needs to find the **IP address** of the server that hosts the website.
+	- This is where the **DNS** comes in. DNS acts like a phonebook for the internet, converting domain names (like `www.example.com`) 
+	into IP addresses (e.g., `192.168.1.1`), which represent the actual server’s location.
+	- Once the IP address is found, the browser sends a request to that address.
+	
+	### 4. **HTTP/HTTPS Request**
+	- **HTTP (Hypertext Transfer Protocol)** and **HTTPS (HTTP Secure)** are protocols used by browsers and servers to communicate.
+	- The browser sends an **HTTP request** to the server, asking for resources such as HTML pages, images, CSS files, etc.
+	- Example of a request: 
+	  ```http
+	  GET /index.html HTTP/1.1
+	  Host: www.example.com
+	  ```
+	
+	### 5. **The Server Processes the Request**
+	- The server, upon receiving the HTTP request, processes it. If the requested resource (e.g., `index.html`) exists, the server 
+	sends it back in an HTTP **response**.
+	- If the resource isn’t found (e.g., a wrong URL), the server may return an error response like **404 Not Found**.
+	  
+	### 6. **HTTP Response**
+	- A successful HTTP response contains a **status code** (e.g., `200 OK`), indicating the result of the request, and the 
+	**content** (such as an HTML file).
+	  
+	  Example of a response:
+	  ```http
+	  HTTP/1.1 200 OK
+	  Content-Type: text/html
+	  
+	  <html>
+	    <head>
+	      <title>Example</title>
+	    </head>
+	    <body>
+	      <h1>Welcome to Example!</h1>
+	    </body>
+	  </html>
+	  ```
+	
+	### 7. **Rendering the Web Page**
+	- The browser receives the HTML content and begins to render the page. It might also request additional resources such as 
+	CSS (for styling) and JavaScript (for interactivity).
+	- The browser parses the HTML structure, applies the CSS, and runs any JavaScript that modifies the behavior of the page.
+	
+	### 8. **Loading Additional Resources**
+	- As the HTML is parsed, if the document refers to external resources (CSS files, JavaScript files, images, etc.), the browser 
+	will issue additional HTTP requests to the server to fetch those resources.
+	- Once all resources are received, the page is fully rendered and displayed to the user.
+	
+	### 9. **User Interaction**
+	- Once the webpage is rendered, the user can interact with it (e.g., clicking buttons, submitting forms).
+	- If a user performs an action like submitting a form or clicking a link, it may result in a new HTTP request to the server, 
+	starting the cycle again.
+	
+	### 10. **Types of Web Interactions**
+	- **Static Websites**: These websites serve static content, meaning the files sent to the browser (HTML, CSS, JavaScript) 
+	are the same for every user.
+	- **Dynamic Websites**: These websites generate different content based on user input, such as showing personalized data. 
+	In these cases, the server runs logic (in languages like Node.js, Python, or PHP) to generate the appropriate response.
+	
+	### 11. **Client-Side vs. Server-Side**
+	- **Client-Side**: Code that runs in the browser, like HTML, CSS, and JavaScript, to display content and manage interactions
+	 without needing to communicate with the server for every action.
+	- **Server-Side**: Code that runs on the server, handling logic like database queries, authentication, or generating dynamic content.
+	
+	### Example: Web Request in Action
+	1. User types `www.example.com` in the browser.
+	2. Browser sends a DNS request to resolve `www.example.com` to an IP address.
+	3. Browser sends an HTTP GET request to the server at that IP address, asking for the homepage.
+	4. The server receives the request, processes it, and sends back an HTTP response with the `index.html` page.
+	5. The browser renders the page and makes additional requests for CSS, images, etc.
+	6. The user interacts with the page, triggering more requests and responses as needed.
+	
+	### Modern Web Technologies:
+	- **AJAX**: Allows browsers to send/receive data from the server asynchronously, without reloading the entire webpage.
+	- **WebSockets**: Enables two-way communication between a browser and server, often used for real-time applications like chat apps.
+	- **API (Application Programming Interface)**: Websites and services often expose APIs to allow external systems (other websites, mobile apps) to interact with their data.
+	
+	### Summary:
+	- **Client (Browser)** sends requests to a **Server**.
+	- The **Server** processes requests, interacts with files or databases, and sends back responses.
+	- The **Browser** renders the response, fetching additional resources as needed.
+	- The user can interact with the webpage, generating new requests and responses in this loop.
